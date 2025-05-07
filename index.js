@@ -23,6 +23,28 @@ getImageBtn.addEventListener('click', async function() {
     }
 })
 
+async function getCatGifByEmotion(emotion, pg13Checked) {
+    const params = new URLSearchParams({
+        emotion,
+        pg13Checked: pg13Checked ? 'true' : 'false',
+    });
+
+    try {
+        const response = await fetch(`/.netlify/functions/getGif?${params.toString()}`);
+        const result = await response.json();
+
+        if (response.ok) {
+          return result; // { src, alt }
+        } else {
+          console.error(result.error);
+          return null;
+        }
+    } catch (error) {
+        console.error("Error fetching cat GIF:", error);
+        return null;
+    }
+}
+
 function closeModal(){
     memeModal.style.display = 'none'
 }
