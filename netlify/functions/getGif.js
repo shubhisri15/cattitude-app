@@ -1,5 +1,5 @@
 export async function handler(event, context) {
-    const giphyAPIAccessKey = import.meta.env.GIPHY_API_KEY
+    const giphyAPIAccessKey = import.meta.env.VITE_GIPHY_API_KEY
 
     if (!GIPHY_API_KEY) {
     return {
