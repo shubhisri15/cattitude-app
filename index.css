@@ -53,7 +53,7 @@ header{
     flex-direction: column;
     width: 30%;
     margin: 0px auto;
-    
+    align-items: center;
 }
 
 /* controls */
@@ -121,7 +121,7 @@ input[type="radio"]{
     background-color: #4F345A;
     color: #FFF8F0;
     padding: 15px;
-    font-size: 24px;
+    font-size: 20px;
     border: none;
     border-radius: 5px;
     margin-bottom: 8px;
