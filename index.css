@@ -155,6 +155,7 @@ input[type="radio"]{
 }
 
 .cat-img{
+    width: 100%;
     max-width: 340px;
     max-height: 420px;
     border-radius: 5px;
