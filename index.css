@@ -147,8 +147,9 @@ input[type="radio"]{
     justify-content: center;
     border: 8px solid #FFF8F0;
     border-radius: 10px;
-    width: 420px;
-    height: 490px;
+    width: 80%;
+    max-width: 400px;
+    max-height: 490px;
     background-color: #FFCCDE;
     box-shadow: 0px 0px 10px #4F345A;
 }
