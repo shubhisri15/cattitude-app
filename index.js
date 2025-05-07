@@ -1,5 +1,4 @@
 import { catEmotions } from '/data.js'
-import { getCatGifByEmotion } from '/getGif.js'
 
 // access elements from DOM
 const emotionRadios = document.getElementById('emotion-radios')
