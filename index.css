@@ -149,7 +149,7 @@ input[type="radio"]{
     border-radius: 10px;
     width: 80%;
     max-width: 400px;
-    max-height: 490px;
+    height: 490px;
     background-color: #FFCCDE;
     box-shadow: 0px 0px 10px #4F345A;
 }
