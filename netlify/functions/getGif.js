@@ -1,6 +1,15 @@
-export async function getCatGifByEmotion(emotion, pg13Checked) {
+export async function handler(event, context) {
     const giphyAPIAccessKey = process.env.GIPHY_API_KEY
-    
+
+    if (!GIPHY_API_KEY) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: "Missing Giphy API Key" }),
+    };
+    }
+
+    // default
+    const { emotion = "happy", pg13Checked = false } = event.queryStringParameters;
     const searchTerm = `${emotion}+cat`
     let endpoint = `https://api.giphy.com/v1/gifs/random?api_key=${giphyAPIAccessKey}&tag=${searchTerm}`
     
@@ -14,18 +23,24 @@ export async function getCatGifByEmotion(emotion, pg13Checked) {
         
         console.log(result.data)
 
-        if (result.data && result.data.images && result.data.images.original.url) {
-            const gifUrl = result.data.images.original.url;
-            const altText = `Cat feeling ${emotion}`
-            
-            return { 
-                src: gifUrl,
-                alt: altText
-            }
+        if (result.data?.images?.original?.url) {
+            return {
+                statusCode: 200,
+                body: JSON.stringify({
+                  src: result.data.images.original.url,
+                  alt: `Cat feeling ${emotion}`,
+                }),
+            };
         } else {
-            console.log("No GIFs found for this mood.");
+            return {
+                statusCode: 404,
+                body: JSON.stringify({ error: "No GIF found for this emotion" }),
+            };
         }
     } catch (error) {
-        console.error("Error fetching cat GIF:", error);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: "Error fetching GIF", details: error.message }),
+        };
     }
 }
